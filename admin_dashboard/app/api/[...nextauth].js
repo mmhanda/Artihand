@@ -1,12 +1,17 @@
-import GoogleProvider from 'next-auth/providers/google'
 import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
 // import AppleProvider from 'next-auth/providers/apple'
 // import FacebookProvider from 'next-auth/providers/facebook'
 // import EmailProvider from 'next-auth/providers/email'
 
 export default NextAuth({
   providers: [
-    // OAuth authentication providers...
+      // OAuth authentication providers...
+      GoogleProvider({
+        clientId: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET
+      }),
+      
     // AppleProvider({
     //   clientId: process.env.APPLE_ID,
     //   clientSecret: process.env.APPLE_SECRET
@@ -15,10 +20,6 @@ export default NextAuth({
     //   clientId: process.env.FACEBOOK_ID,
     //   clientSecret: process.env.FACEBOOK_SECRET
     // }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET
-    }),
     // Passwordless / email sign in
     // EmailProvider({
     //   server: process.env.MAIL_SERVER,
