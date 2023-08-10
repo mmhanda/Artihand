@@ -2,18 +2,18 @@
 
 .env
 
-# dependencies
+# dependencies/fr
 frontend/node_modules
 frontend/.pnp
 frontend/.pnp.js
 
-# testing
+# testing/fr
 frontend/coverage
 
-# production
+# production/fr
 frontend/build
 
-# misc
+# misc/fr
 frontend/.env
 frontend/.DS_Store
 frontend/.env.local
@@ -24,3 +24,26 @@ frontend/.env.production.local
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+
+# dependencies/bc
+backend/node_modules
+backend/.pnp
+backend/.pnp.js
+
+# testing/bc
+backend/coverage
+
+# production/bc
+backend/build
+
+# misc/bc
+backend/.env
+backend/.DS_Store
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
+
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
