@@ -1,3 +1,4 @@
+
 const products = [
   {
     _id: 1,
@@ -9,7 +10,7 @@ const products = [
     countInStock: 100,
     rating: 4.5,
     numReviews: 120,
-    image: "../public/images/phone.jpg"
+    image: "/images/phone.jpg"
   },
   {
     _id: 2,
@@ -21,7 +22,7 @@ const products = [
     countInStock: 50,
     rating: 4.8,
     numReviews: 85,
-    image: "../public/images/sample.jpg"
+    image: "/images/sample.jpg"
   },
   {
     _id: 3,
@@ -33,7 +34,7 @@ const products = [
     countInStock: 30,
     rating: 4.6,
     numReviews: 65,
-    image: "../public/images/screens.png"
+    image: "/images/playstation.jpg"
   },
   {
     _id: 9,
@@ -45,7 +46,7 @@ const products = [
     countInStock: 40,
     rating: 4.6,
     numReviews: 75,
-    image: "../public/images/camera.jpg"
+    image: "/images/camera.jpg"
   },
   {
     _id: 10,
@@ -57,7 +58,7 @@ const products = [
     countInStock: 90,
     rating: 4.5,
     numReviews: 110,
-    image: "../public/images/alexa.jpg"
+    image: "/images/alexa.jpg"
   }
 ];
 
