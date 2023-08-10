@@ -1,2 +1,0 @@
-# Artihand
-artihand ecommerce website 
