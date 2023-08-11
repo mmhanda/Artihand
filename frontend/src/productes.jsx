@@ -20,7 +20,7 @@ const products = [
     category: "Food & Beverages",
     price: 18.99,
     countInStock: 50,
-    rating: 4.8,
+    rating: 3.8,
     numReviews: 85,
     image: "/images/sample.jpg"
   },
@@ -32,7 +32,7 @@ const products = [
     category: "Electronics",
     price: 799.99,
     countInStock: 30,
-    rating: 4.6,
+    rating: 2.6,
     numReviews: 65,
     image: "/images/playstation.jpg"
   },
@@ -44,7 +44,7 @@ const products = [
     category: "Home & Kitchen",
     price: 89.75,
     countInStock: 40,
-    rating: 4.6,
+    rating: 1.6,
     numReviews: 75,
     image: "/images/camera.jpg"
   },
@@ -56,7 +56,7 @@ const products = [
     category: "Fitness",
     price: 34.99,
     countInStock: 90,
-    rating: 4.5,
+    rating: 0.5,
     numReviews: 110,
     image: "/images/alexa.jpg"
   }
