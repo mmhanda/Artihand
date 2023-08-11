@@ -11,10 +11,6 @@ app.get('/:num', (req, res) => {
   }
 });
 
-app.get('/api/products', (req, res) => {
-  res.json(products);
-})
-
 app.get('/api/products/:id', (req, res) => {
   const product = products.find((e) => e._id == req.params.id)
   if (product) {
@@ -25,5 +21,8 @@ app.get('/api/products/:id', (req, res) => {
   }
 })
 
+app.get('/api/products', (req, res) => {
+  res.json(products);
+})
 
 app.listen(process.env.PORT || 5000, () => { console.log("server is runing....") });
