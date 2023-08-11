@@ -35,12 +35,6 @@ const ProductScreen = () => {
         <ListGroup>
           <ListGroup.Item>
             <Row>
-              <Col>Price:</Col>
-              <Col> <strong>{product.price}</strong></Col>
-            </Row>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Row>
               <Col>Status:</Col>
               <Col> <strong>{product.countInStock > 0 ? 'In stock' : "Out Of Stock"}</strong></Col>
             </Row>
