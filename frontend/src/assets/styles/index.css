@@ -20,7 +20,7 @@ main {
   height: 2.5em;  
   overflow: hidden; 
   text-overflow: ellipsis; 
-  white-space: 
+  white-space: nowrap;
 }
 
 table td,
