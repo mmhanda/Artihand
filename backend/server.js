@@ -13,12 +13,7 @@ app.get('/:num', (req, res) => {
 
 app.get('/api/products/:id', (req, res) => {
   const product = products.find((e) => e._id == req.params.id)
-  if (product) {
-    res.json(product);
-  }
-  else {
-    res.send("NOT FOUND");
-  }
+  res.json(product);
 })
 
 app.get('/api/products', (req, res) => {
