@@ -1,8 +1,8 @@
 import express from "express";
 import products from "./data/productes.js"
-import e from "express";
-const Port = 5000;
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 
 app.get('/:num', (req, res) => {
@@ -26,4 +26,4 @@ app.get('/api/products/:id', (req, res) => {
 })
 
 
-app.listen(Port, () => { console.log("server is runing....") });
+app.listen(process.env.PORT || 5000, () => { console.log("server is runing....") });
