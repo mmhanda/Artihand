@@ -25,6 +25,7 @@ const ProductScreen = () => {
         </ListGroup.Item>
         <ListGroup.Item>
           <h4>Price ${product.price}</h4>
+          <strong>Description:</strong> {product.description}
         </ListGroup.Item>
       </ListGroup>
 

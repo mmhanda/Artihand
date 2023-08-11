@@ -6,7 +6,7 @@ const products = [
     brand: "TechMaster",
     category: "Electronics",
     price: 599.99,
-    countInStock: 100,
+    countInStock: 0,
     rating: 4.5,
     numReviews: 120,
     image: "/images/phone.jpg"
@@ -150,7 +150,7 @@ const products = [
     brand: "SkyCrafter",
     category: "Electronics",
     price: 499.95,
-    countInStock: 15,
+    countInStock: 0,
     rating: 4.3,
     numReviews: 75,
     image: "/images/sample.jpg"
@@ -162,7 +162,7 @@ const products = [
     brand: "RetroCaptures",
     category: "Photography",
     price: 89.50,
-    countInStock: 30,
+    countInStock: 1,
     rating: 3.1,
     numReviews: 55,
     image: "/images/alexa.jpg"
