@@ -26,9 +26,29 @@ const importData = async () => {
       return { ...product, user: userAdmin };
     })
     
-    const createdProducts = await Product.insertMany(producteSample);
+    await Product.insertMany(producteSample);
+    
     console.log(" Data imported sucessfully ");
+    process.exit(0);
   } catch (error) {
+    console.log(error.message);
+    process.exit(1);
+  }
+}
+
+const deleteData = async () => {
+
+  try {
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
+
+    console.log("Database cleared");
+    process.exit();
+
+  } catch (error) {
+    console.log("problem removing data!");
     console.log(error.message);
   }
 }
+
