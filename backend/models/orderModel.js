@@ -40,6 +40,37 @@ const orderShema = new mongoose.Schema({
     required: true,
     default: 0.0,
   },
+  taxPrice: {
+    required: true,
+    type: Number,
+    default: 0.0,
+  },
+  shippingPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  isPaid: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  paidAt: {
+    type: Date,
+  },
+  deliveredAt: {
+    type: Date,
+  },
+  isDelivered: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 }, {timestamps: true});
 
 const order_Model = mongoose.model("Order", orderShema);
