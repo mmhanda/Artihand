@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: 1,
     name: "Advanced Smartphone X Plus Pro Max",
     description: "Experience the ultimate power and sleek design of the Advanced Smartphone X Plus Pro Max, packed with cutting-edge features.",
     brand: "TechMaster",
@@ -12,7 +11,6 @@ const products = [
     image: "/images/phone.jpg"
   },
   {
-    _id: 2,
     name: "Exquisite Gourmet Reserve Coffee Blend",
     description: "Indulge in the aroma and flavors of the Exquisite Gourmet Reserve Coffee Blend, sourced from the most remote and exotic coffee plantations.",
     brand: "BeanMasters",
@@ -24,7 +22,6 @@ const products = [
     image: "/images/sample.jpg"
   },
   {
-    _id: 3,
     name: "Ultimate 4K Ultra HD Smart TV",
     description: "Immerse yourself in a world of stunning visuals and intelligent features with the Ultimate 4K Ultra HD Smart TV from VisionTech.",
     brand: "VisionTech",
@@ -36,7 +33,6 @@ const products = [
     image: "/images/playstation.jpg"
   },
   {
-    _id: 4,
     name: "Elegant Diamond Pendant Necklace",
     description: "Adorn yourself with the timeless elegance of the Elegant Diamond Pendant Necklace, a symbol of luxury and grace.",
     brand: "LuxuryGem",
@@ -48,7 +44,6 @@ const products = [
     image: "/images/airpods.jpg"
   },
   {
-    _id: 5,
     name: "Ultra-Lightweight Trail Running Shoes",
     description: "Conquer the trails with ease in the Ultra-Lightweight Trail Running Shoes, designed for optimal performance and comfort.",
     brand: "AdventureGear",
@@ -60,7 +55,6 @@ const products = [
     image: "/images/mouse.jpg"
   },
   {
-    _id: 6,
     name: "Classic Vintage Vinyl Record Player",
     description: "Relive the magic of vintage music with the Classic Vintage Vinyl Record Player, a beautifully crafted piece of nostalgia.",
     brand: "RetroSounds",
@@ -72,7 +66,6 @@ const products = [
     image: "/images/screens.png"
   },
   {
-    _id: 7,
     name: "Luxurious Silk Embroidered Bedding Set",
     description: "Transform your bedroom into a sanctuary of opulence with the Luxurious Silk Embroidered Bedding Set, fit for royalty.",
     brand: "ElegantHome",
@@ -84,7 +77,6 @@ const products = [
     image: "/images/alexa.jpg"
   },
   {
-    _id: 8,
     name: "Adventure-Ready Waterproof Backpack",
     description: "Embark on epic journeys with the Adventure-Ready Waterproof Backpack, built to withstand the elements and keep your gear secure.",
     brand: "WildExplorations",
@@ -96,7 +88,6 @@ const products = [
     image: "/images/phone.jpg"
   },
   {
-    _id: 9,
     name: "Pro Gaming Mechanical Keyboard",
     description: "Elevate your gaming experience with the Pro Gaming Mechanical Keyboard, featuring responsive switches and customizable RGB lighting.",
     brand: "GameMasters",
@@ -108,7 +99,6 @@ const products = [
     image: "/images/sample.jpg"
   },
   {
-    _id: 10,
     name: "Artisan Hand-Crafted Ceramic Vase",
     description: "Add a touch of artistic elegance to your home with the Artisan Hand-Crafted Ceramic Vase, a masterpiece of craftsmanship.",
     brand: "ArtfulLiving",
@@ -120,7 +110,6 @@ const products = [
     image: "/images/camera.jpg"
   },
   {
-    _id: 11,
     name: "Luxury Leather Office Chair",
     description: "Experience comfort and style with the Luxury Leather Office Chair, designed for long hours of productive work.",
     brand: "ExecutiveElegance",
@@ -132,7 +121,6 @@ const products = [
     image: "/images/mouse.jpg"
   },
   {
-    _id: 12,
     name: "Diamond Halo Engagement Ring",
     description: "Celebrate love and commitment with the exquisite Diamond Halo Engagement Ring, a symbol of everlasting devotion.",
     brand: "ForeverSparkle",
@@ -144,7 +132,6 @@ const products = [
     image: "/images/phone.jpg"
   },
   {
-    _id: 13,
     name: "Ultra-HD Drone with FPV Camera",
     description: "Capture breathtaking aerial views with the Ultra-HD Drone equipped with a FPV camera, perfect for photography and exploration.",
     brand: "SkyCrafter",
@@ -156,7 +143,6 @@ const products = [
     image: "/images/sample.jpg"
   },
   {
-    _id: 14,
     name: "Vintage Polaroid Instant Camera",
     description: "Capture moments in a nostalgic way with the Vintage Polaroid Instant Camera, delivering instant memories to cherish.",
     brand: "RetroCaptures",
