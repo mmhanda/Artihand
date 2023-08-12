@@ -29,7 +29,7 @@ const importData = async () => {
     await Product.insertMany(producteSample);
     
     console.log(" Data imported sucessfully ");
-    process.exit(0);
+    process.exit();
   } catch (error) {
     console.log(error.message);
     process.exit(1);
@@ -52,3 +52,14 @@ const deleteData = async () => {
   }
 }
 
+const makechanges = () => {
+  
+  if (process.argv[2] === '-d') {
+    deleteData();
+  }
+  else if (process.argv[2] === '-import') {
+    importData();
+  }
+}
+
+makechanges();
