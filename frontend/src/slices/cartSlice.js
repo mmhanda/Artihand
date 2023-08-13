@@ -1,5 +1,4 @@
 import { createSlice} from '@reduxjs/toolkit';
-import { json } from 'react-router-dom';
 
 const initialState = localStorage.getItem('cart') ? JSON.parse(
   localStorage.getItem('cart')) : {cartItems: []}
@@ -39,4 +38,5 @@ const carteSlice = createSlice({
 });
 
 
+export const { addToCart } = carteSlice.actions;
 export default carteSlice.reducer;

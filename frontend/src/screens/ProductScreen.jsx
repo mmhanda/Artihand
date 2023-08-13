@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Rating from "../components/Rating";
 import Loder from "../components/Loader";
 import Message from "../components/Message";
-import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
+import { Form, Col, Row, Image, ListGroup, Card, Button, ListGroupItem, FormControl } from "react-bootstrap";
 import { useGetproductDetailsQuery } from "../slices/productDetailsApiSlice";
 
 const ProductScreen = () => {
   const {id: productID} = useParams();
   const { data: product, isLoading, error } = useGetproductDetailsQuery(productID);
-
+  const [qty, setQty] = useState(1);
   return (
     <>
     <Link className="btn btn-light my-3" to="/" >Go Back</Link>
@@ -46,6 +47,29 @@ const ProductScreen = () => {
                   <Col> <strong>{product?.countInStock > 0 ? 'In stock' : "Out Of Stock"}</strong></Col>
                 </Row>
               </ListGroup.Item>
+              {
+                product?.countInStock > 0 && (
+                  <ListGroupItem>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control as='select'
+                                     value={qty}
+                                     onChange={(e) => {
+                                     setQty(Number(e.target.value)
+                                     )}} >
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1 + " Pieces"}
+                            </option>
+                          ))} 
+                          {/* the keys() is for the indexes creating*/}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                )
+              }
               <ListGroup.Item>
                 <Button className="btn-block" type="button"
                         disabled={product?.countInStock === 0}>
