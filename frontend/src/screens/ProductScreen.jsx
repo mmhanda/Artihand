@@ -1,16 +1,26 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Rating from "../components/Rating";
 import Loder from "../components/Loader";
 import Message from "../components/Message";
-import { Form, Col, Row, Image, ListGroup, Card, Button, ListGroupItem, FormControl } from "react-bootstrap";
+import { Form, Col, Row, Image, ListGroup, Card, Button, ListGroupItem } from "react-bootstrap";
 import { useGetproductDetailsQuery } from "../slices/productDetailsApiSlice";
+import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
   const {id: productID} = useParams();
   const { data: product, isLoading, error } = useGetproductDetailsQuery(productID);
   const [qty, setQty] = useState(1);
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart");
+  };
+
   return (
     <>
     <Link className="btn btn-light my-3" to="/" >Go Back</Link>
@@ -72,7 +82,8 @@ const ProductScreen = () => {
               }
               <ListGroup.Item>
                 <Button className="btn-block" type="button"
-                        disabled={product?.countInStock === 0}>
+                        disabled={product?.countInStock === 0}
+                        onClick={addToCartHandler}>
                   Add To Cart
                 </Button>
               </ListGroup.Item>

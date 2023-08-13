@@ -23,9 +23,9 @@ const carteSlice = createSlice({
       }
 
       //calculate the total price:
-      state.itemPrice = addDecimals(state.cartItems.reducer((acc, item) => (
-        acc + item.price * item.qty), 0)); // 0 is the initial value of acc
-      
+      state.itemPrice = addDecimals(state.cartItems.reduce((acc, item) => 
+        acc + item.price * item.qty, 0)); // 0 is the initial value of acc
+
       // if the price more than 100$ shippnig will be free
       state.shippingPrice = addDecimals(state.itemPrice > 100 ? 0 : 10);
       state.taxPrice = addDecimals(Number(state.itemPrice * 0.15).toFixed(2));//taxes
