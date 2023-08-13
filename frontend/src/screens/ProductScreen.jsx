@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useGetproductDetailsQuery } from "../slices/productDetailsApiSlice";
 
 const ProductScreen = () => {
-  const { data: product, isLoading, error } = useGetproductDetailsQuery();
+  const {id: productID} = useParams();
+  const { data: product, isLoading, error } = useGetproductDetailsQuery(productID);
+
   return (
     <>
     { isLoading ? (
