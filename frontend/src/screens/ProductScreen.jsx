@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
+import Loder from "../components/Loader";
+import Message from "../components/Message";
+import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { useGetproductDetailsQuery } from "../slices/productDetailsApiSlice";
 
 const ProductScreen = () => {
@@ -10,11 +12,11 @@ const ProductScreen = () => {
 
   return (
     <>
+    <Link className="btn btn-light my-3" to="/" >Go Back</Link>
     { isLoading ? (
-				<h2>isLoading</h2>
-			) : error ? (<div>{ error?.data?.message || error.error }</div>) :
+				<Loder/>
+			) : error ? (<div><Message variant="danger"> { error?.data?.message || error.error } </Message></div>) :
 			(<>
-        <Link className="btn btn-light my-3" to="/" >Go Back</Link>
         <Row>
           <Col md={5}>
             <Image src={product?.image} alt={product?.name} fluid />
