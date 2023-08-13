@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     [ApiSlice.reducerPath]: ApiSlice.reducer,
     cart: cartSliceReducer },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
               .concat(ApiSlice.middleware),
   devTools: process.env.NODE_ENV === 'development' ? true : false,
 });

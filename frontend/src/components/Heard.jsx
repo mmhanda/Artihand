@@ -1,9 +1,13 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import logo from "../assets/logo (1).png";
 import { LinkContainer } from "react-router-bootstrap";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
       <header>
       <Navbar bg="light" variant="light" expand="md" collapseOnSelect>
@@ -21,7 +25,16 @@ const Header = () => {
                 <Nav.Link> <FaUser/> Sing In </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/cart">
-                <Nav.Link> <FaShoppingCart/> cart </Nav.Link>
+                <Nav.Link>
+                  <FaShoppingCart/> Cart
+                    {
+                      cartItems.lenght > 0 && (
+                      <Badge pill bg="success" style={{marginLeft: "5px"}} >
+                        {cartItems.reduce((a, c) => a + c.qty, 0)} {Number(10)}
+                      </Badge>
+                      )
+                    }
+                </Nav.Link>
               </LinkContainer>
 
             </Nav>
