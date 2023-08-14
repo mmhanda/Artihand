@@ -5,7 +5,7 @@ const products = [
     brand: "TechMaster",
     category: "Electronics",
     price: 599.99,
-    countInStock: 0,
+    countInStock: 1,
     rating: 4.5,
     numReviews: 120,
     image: "/images/phone.jpg"

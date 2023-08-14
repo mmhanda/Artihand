@@ -14,11 +14,11 @@ const ProductScreen = () => {
   const [qty, setQty] = useState(1);
   
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    // navigate("/cart");
+    navigate("/cart");
   };
 
   return (
