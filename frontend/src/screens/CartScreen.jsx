@@ -4,7 +4,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from 'react-icons/fa';
 import Message from "../components/Message";
-import { addToCart } from "../slices/cartSlice";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
 
@@ -16,6 +16,15 @@ const CartScreen = () => {
   const addToCartHandler = async (item, qty) => {
     dispatch(addToCart({...item, qty}));
   };
+
+  const removeFromCarttHandler = async (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const checkoutHandler = () => {
+    navigate("/login/");
+  }
+
   return(
     <Row>
       <Col md={8}>
@@ -49,7 +58,9 @@ const CartScreen = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button type="button" variant="light" > <FaTrash/> </Button>
+                    <Button type="button" variant="light" 
+                            onClick={() => removeFromCarttHandler(item._id)}
+                    > <FaTrash/> </Button>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -69,7 +80,8 @@ const CartScreen = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Button type="button" className="btn-block"
-                        disabled={cartItems.length === 0}>
+                        disabled={cartItems.length === 0}
+                        onClick={checkoutHandler}>
                         Procced To Checkout
               </Button>
             </ListGroup.Item>
