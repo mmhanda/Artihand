@@ -4,7 +4,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from 'react-icons/fa';
 import Message from "../components/Message";
-
+import { addToCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
 
@@ -13,8 +13,8 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const addToCartHandler = (item, value) => {
-    
+  const addToCartHandler = async (item, qty) => {
+    dispatch(addToCart({...item, qty}));
   };
   return(
     <Row>
