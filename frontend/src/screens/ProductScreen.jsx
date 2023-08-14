@@ -14,11 +14,11 @@ const ProductScreen = () => {
   const [qty, setQty] = useState(1);
   
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
+    // navigate("/cart");
   };
 
   return (
@@ -72,7 +72,7 @@ const ProductScreen = () => {
                             <option key={x + 1} value={x + 1}>
                               {x + 1 + " Pieces"}
                             </option>
-                          ))} 
+                          ))}
                           {/* the keys() is for the indexes creating*/}
                         </Form.Control>
                       </Col>

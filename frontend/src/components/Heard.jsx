@@ -20,7 +20,6 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-
               <LinkContainer to="/login">
                 <Nav.Link> <FaUser/> Sing In </Nav.Link>
               </LinkContainer>
@@ -28,15 +27,13 @@ const Header = () => {
                 <Nav.Link>
                   <FaShoppingCart/> Cart
                     {
-                      cartItems.lenght > 0 && (
+                      cartItems.length > 0 && (
                       <Badge pill bg="success" style={{marginLeft: "5px"}} >
-                        {cartItems.reduce((a, c) => a + c.qty, 0)} {Number(10)}
-                      </Badge>
-                      )
+                        {cartItems.reduce((a, c) => a + c.qty, 0)}
+                      </Badge>)
                     }
                 </Nav.Link>
               </LinkContainer>
-
             </Nav>
           </Navbar.Collapse>
         </Container>
