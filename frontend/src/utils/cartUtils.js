@@ -15,7 +15,7 @@ export const updateCart = (state, action) => {
   }
 
   //calculate the total price:
-  state.itemPrice = addDecimals(state.cartItems.reduce((acc, item) => 
+  state.itemPrice = addDecimals(state.cartItems.reduce((acc, item) =>
     acc + item.price * item.qty, 0)); // 0 is the initial value of acc
 
   // if the price more than 100$ shippnig will be free
