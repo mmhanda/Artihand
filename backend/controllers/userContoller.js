@@ -32,7 +32,7 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 const getUserById = asyncHandler(async (req, res) => {
-  res.send("user by id data");
+  res.send("user data by id");
 });
 
 //:id needed here
