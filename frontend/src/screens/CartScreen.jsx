@@ -22,7 +22,7 @@ const CartScreen = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login/");
+    navigate("/login?redirect=/shipping");
   }
 
   return(
@@ -33,7 +33,7 @@ const CartScreen = () => {
           <Message>
             Your Cart is Empty <Link to='/' >Go Back</Link>
           </Message>
-        ): (
+        ) : (
           <ListGroup variant="flush" >
             { cartItems.map((item) => (
               <ListGroup.Item key={item._id} >
