@@ -9,13 +9,13 @@ const errorHandler = (err, req, res, next) => {
   let message = err.message;
   
   if (err.name === 'CastError' && err.kind === 'ObjectId') {
-    message = `Resource not found`;
+    message = `Item not found`;
     statusCode = 404;
   }
 
   res.status(statusCode).json({
     message,
-    stack: err.stack,
+    stack: (process.env.NODE_ENV === 'development' && err.stack),
   });
 }
 
