@@ -9,5 +9,7 @@ deleteUser } from "../controllers/userContoller.js";
 router.route('/').get(authUser).post(registerUser);
 router.post('/logout', logoutUser);
 router.post('/login', authUser);
+router.route('/profile').get(getUserProfile).put(updateUserProfile);
+// router.get("/:id", )
 
 export default router;
