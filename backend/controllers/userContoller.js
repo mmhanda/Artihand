@@ -8,9 +8,9 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (user && (await user.matchPassword(password))) {
     generateToken(res, user._id);
-   
+
     res.json({
-      _id: UserId,
+      _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin
@@ -32,7 +32,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-  
+
   const { name, email, password } = req.body;
   const userExist = await User.findOne({ email });
 
@@ -47,6 +47,8 @@ const registerUser = asyncHandler(async (req, res) => {
         password: password });
   
   if (user) {
+    generateToken(res, user._id);
+
     res.status(201).json({ // 201 code means some thing created on the sevre successfully
       _id: user._id,
       name: user.name,
