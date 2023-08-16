@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser()); // cookieParser for accesing the req.cookie.nameofcokie wich is Jwt 
 
 app.get('/', (req, res) => {
   if (req.params.num == "pass") {
@@ -25,4 +25,4 @@ app.use('/api/users/', usersRoutes);
 app.use(errorHandler);
 app.use(notFound);
 
-app.listen(process.env.PORT || 5000, () => { console.log("server is runing....") });
+app.listen(process.env.PORT || 5000, () => { console.log(`server is runing.... on Port ${process.env.PORT}`) });
