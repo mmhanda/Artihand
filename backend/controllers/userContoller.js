@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 const authUser = asyncHandler(async (req, res) => {
 
@@ -41,7 +42,31 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-  res.send("user registred");
+  
+  const { name, email, password } = req.body;
+  const userExist = await User.findOne({ email });
+
+  if (userExist) {
+    res.status(400); // the 400 code means client side error
+    throw new Error('User already exist');
+  }
+
+  const user = await User.create({
+        name: name,
+        email:email,
+        password: password });
+  
+  if (user) {
+    res.status(201).json({ // 201 code means some thing created on the sevre successfully
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    })
+  } else {
+    res.status(400);
+    throw new Error('Invalid user data');
+  }
 });
 
 const getUserProfile = asyncHandler(async (req, res) => {
