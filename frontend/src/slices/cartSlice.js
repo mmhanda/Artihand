@@ -13,6 +13,7 @@ const carteSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
+      localStorage.setItem('cart', JSON.stringify(state));
     }
   },
 });
