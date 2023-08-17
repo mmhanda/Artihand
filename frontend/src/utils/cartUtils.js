@@ -11,7 +11,7 @@ export const updateCart = (state, action) => {
     state.cartItems = state.cartItems.map((x) => x._id === existItem._id ? item : x)
   }
   else {
-    state.cartItems = [...state.cartItems, item];
+    state.cartItems = [...state.cartItems, item]; // this called umutable way because we creating a new memory
   }
 
   //calculate the total price:
