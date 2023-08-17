@@ -15,10 +15,30 @@ const LoginScreen = () => {
   const [ password, setPassword ] = useState('');
 
   const dispatch = useDispatch();
-  const submitHandler = (e) => {
+  const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+  const { userInfo } = useSelector((state) => state.auth);
+  
+  const { search } = useLocation(); //bring the params on the url
+  const searchposition = new URLSearchParams(search);
+  const redirect = searchposition.get('redirect') || "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [userInfo, redirect, navigate]);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    // dispatch(useLoginMutation);
-    console.log('submit handler called');
+    try {
+      const res = await login({ email, password }).unwrap(); //unwrap is unwraping the value from the login because it is returnig a promess
+      navigate(redirect);
+      dispatch(setCredentials(...res));
+    } catch (err) {
+      toast.error(err?.data?.message || err?.error);
+    }
   };
 
   return (
@@ -39,16 +59,21 @@ const LoginScreen = () => {
             </Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary" className="mt-2">
+        <Button type="submit" variant="primary" className="mt-2"
+                  disabled={isLoading}>
           Sign In
         </Button>
+        
+
       </Form>
       
       <Row className="py-3">
         <Col>
-          New Customer? <Link to='/register'> Register </Link>
+          New Customer? <Link to={redirect ? `/register?redirect=${redirect}`: 
+          "/register"}> Register </Link>
         </Col>
       </Row>
+      { isLoading && <Loader/> }
     </FormContainer>
   );
 };
