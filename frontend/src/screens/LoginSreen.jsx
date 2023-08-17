@@ -34,8 +34,8 @@ const LoginScreen = () => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap(); //unwrap is unwraping the value from the login because it is returnig a promess
+      dispatch(setCredentials({...res}));
       navigate(redirect);
-      dispatch(setCredentials(...res));
     } catch (err) {
       toast.error(err?.data?.message || err?.error);
     }
