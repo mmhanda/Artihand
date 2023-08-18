@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FormContainer from '../components/FormContainer';
 import { Form, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ import { saveShippingAddress } from '../slices/cartSlice';
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
-  
+
   const [ address, setAddress ] = useState(shippingAddress?.address ||'');
   const [ city, setCity ] = useState(shippingAddress?.city ||'');
   const [ postalCode, setPostalCode ] = useState(shippingAddress?.postalCode ||'');
