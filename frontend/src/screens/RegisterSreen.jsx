@@ -35,11 +35,15 @@ const RegisterScreen = () => {
     e.preventDefault();
 
     if(!email || !password || !name || !Confirmopassword){
-      toast.error("All Fields are required");
+      toast.error("All Fields are required", {
+        autoClose: 2200,
+      });
       return ;
     }
     else if (password !== Confirmopassword) {
-      toast.error("Passwords must match");
+      toast.error("Passwords must match", {
+        autoClose: 2200,
+      });
       return ;
     }
     else {
@@ -48,7 +52,9 @@ const RegisterScreen = () => {
         console.log(res);
         dispatch(setCredentials({...res}));
         navigate(redirect);
-        toast.success("Registered Successfully");
+        toast.success("Registered Successfully", {
+          autoClose: 2400,
+        });
       } catch (err) {
         toast.error(err?.data?.message || err?.error);
       }

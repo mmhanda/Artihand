@@ -32,7 +32,9 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if(!email || !password){
-      toast.error("All Fields are required");
+      toast.error("All Fields are required", {
+        autoClose: 5000,
+      });
       return ;
     }
     try {

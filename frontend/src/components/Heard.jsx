@@ -22,7 +22,9 @@ const Header = () => {
       await logoutExpireToken().unwrap(); // unwrap for throwing error bacuse is retuning a promess
       dispatch(logout());
       navigate('/');
-      toast.info("Logged Out");
+      toast.info("Logged Out", {
+        autoClose: 1800,
+      });
     } catch (err) {
       toast.error(err?.error?.message || err.message);
     }
