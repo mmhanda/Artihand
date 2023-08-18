@@ -1,22 +1,24 @@
 import FormContainer from "../components/FormContainer";
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
-import { useLoginMutation } from "../slices/usersApiSlice";
+import { useRegisterMutation } from "../slices/usersApiSlice";
 import Loader from "../components/Loader";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 
   const [ email, setEmail ] = useState('');
+  const [ name, setName ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ Confirmopassword, setConfirmoPassword ] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [register, { isLoading }] = useRegisterMutation();
   const { userInfo } = useSelector((state) => state.auth);
   
   const { search } = useLocation(); //bring the params on the url
@@ -31,49 +33,67 @@ const LoginScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if(!email || !password){
+
+    if(!email || !password || !name || !Confirmopassword){
       toast.error("All Fields are required");
       return ;
     }
-    try {
-      const res = await login({ email, password }).unwrap(); //add unwrap is for throw error because it is returning a promess 
-      dispatch(setCredentials({...res}));
-      navigate(redirect);
-    } catch (err) {
-      toast.error(err?.data?.message || err?.error);
+    else if (password !== Confirmopassword) {
+      toast.error("Passwords must match");
+      return ;
+    }
+    else {
+      try {
+        const res = await register({ email, password, name }).unwrap(); //add unwrap is for throw error because it is returning a promess 
+        console.log(res);
+        dispatch(setCredentials({...res}));
+        navigate(redirect);
+        toast.success("Registered Successfully");
+      } catch (err) {
+        toast.error(err?.data?.message || err?.error);
+      }
     }
   };
 
   return (
     <FormContainer>
-      <h1> Sign In </h1>
+      <h1> Sign Up </h1>
       <Form onSubmit={submitHandler}>
-        
+        <Form.Group controlId="name" className="my-3">
+          <Form.Label> Your name </Form.Label>
+            <Form.Control type="text" placeholder="First and last name"
+              value={name} onChange={(e) => setName(e.target.value)}>
+            </Form.Control>
+        </Form.Group>
+
         <Form.Group controlId="email" className="my-3">
           <Form.Label> Email Address </Form.Label>
             <Form.Control type="email" placeholder="email"
               value={email} onChange={(e) => setEmail(e.target.value)}>
             </Form.Control>
         </Form.Group>
-        <Form.Group controlId="password">
+        <Form.Group controlId="password" className="my-3">
           <Form.Label> Password </Form.Label>
             <Form.Control type="password" placeholder="password"
               value={password} onChange={(e) => setPassword(e.target.value)}>
             </Form.Control>
         </Form.Group>
-
+        <Form.Group controlId="confirm-password" className="my-3">
+          <Form.Label> Re-enter password </Form.Label>
+            <Form.Control type="password" placeholder="confirm password"
+              value={Confirmopassword} onChange={(e) => setConfirmoPassword(e.target.value)}>
+            </Form.Control>
+        </Form.Group>
         <Button type="submit" variant="primary" className="mt-2"
                   disabled={isLoading}>
-          Sign In
+          Register
         </Button>
-        
 
       </Form>
-      
       <Row className="py-3">
         <Col>
-          New Customer? <Link to={redirect ? `/register?redirect=${redirect}`: 
-          "/register"}> Register </Link>
+          Already Registred? <Link to={redirect ? `/login?redirect=${redirect}`: 
+          "/login"}> Login </Link>
         </Col>
       </Row>
       { isLoading && <Loader/> }
@@ -81,4 +101,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
