@@ -2,15 +2,32 @@ import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import logo from "../assets/logo (1).png";
 import { LinkContainer } from "react-router-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useLogoutMutation } from "../slices/usersApiSlice";
+import { logout } from "../slices/authSlice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
 
-  const logoutHandler = () => {
+  const [ logoutExpireToken ] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutExpireToken().unwrap(); // unwrap for throwing error bacuse is retuning a promess
+      dispatch(logout());
+      navigate('/');
+      toast.success("Logged Out");
+    } catch (err) {
+      toast.error(err?.error?.message || err.message);
+    }
   };
+
   return (
       <header>
       <Navbar bg="light" variant="light" expand="md" collapseOnSelect>

@@ -2,7 +2,6 @@ import FormContainer from "../components/FormContainer";
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { FaKissBeam, FaVoicemail } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../slices/usersApiSlice";
 import Loader from "../components/Loader";
@@ -33,7 +32,7 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await login({ email, password }).unwrap(); //unwrap is unwraping the value from the login because it is returnig a promess
+      const res = await login({ email, password }).unwrap(); //add unwrap is for throw error because it is returning a promess 
       dispatch(setCredentials({...res}));
       navigate(redirect);
     } catch (err) {

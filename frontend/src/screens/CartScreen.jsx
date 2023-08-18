@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from 'react-icons/fa';

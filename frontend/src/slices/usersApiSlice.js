@@ -4,15 +4,20 @@ import { ApiSlice } from "./apiSlice";
 export const usersApiSlice = ApiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({ // mutation is for the POST requeste && query is for GET
-
       query: (data) => ({
         url: `${USERS_URL}/auth`,
         method: 'POST',
         body: data,
       }),
+    }),
 
+    logout: builder.mutation({
+      query: () => ({
+        url: `${USERS_URL}/logout`,
+        method: 'POST',
+      })
     }),
   }),
 });
 
-export const { useLoginMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation } = usersApiSlice;
