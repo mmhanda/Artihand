@@ -18,8 +18,8 @@ const carteSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state));
     },
     saveShippingAddress: (state, action) => {
-      state.saveShippingAddress = action.payload;
-      return updateCart(state);
+      state.shippingAddress = action.payload;
+      localStorage.setItem('cart', JSON.stringify(state));
     },
   },
 });

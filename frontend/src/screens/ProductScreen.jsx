@@ -29,11 +29,11 @@ const ProductScreen = () => {
 			) : error ? (<div><Message variant="danger"> { error?.data?.message || error.error } </Message></div>) :
 			(<>
         <Row>
-          <Col md={5}>
+          <Col md={6}>
             <Image src={product?.image} alt={product?.name} fluid />
           </Col>
 
-          <Col md={4}>
+          <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h3> {product?.name} </h3>
@@ -41,9 +41,9 @@ const ProductScreen = () => {
             <ListGroup.Item>
               <Rating value={product?.rating} text={`${product?.numReviews} reviews`}/>
             </ListGroup.Item>
+            <ListGroup.Item> Price ${product?.price}</ListGroup.Item>
             <ListGroup.Item>
-              <h4>Price ${product?.price}</h4>
-              <strong>Description:</strong> {product?.description}
+              <strong>Description:</strong> <h7> {product?.description} </h7>
             </ListGroup.Item>
           </ListGroup>
 

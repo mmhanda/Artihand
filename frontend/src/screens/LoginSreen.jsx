@@ -33,7 +33,7 @@ const LoginScreen = () => {
     e.preventDefault();
     if(!email || !password){
       toast.error("All Fields are required", {
-        autoClose: 5000,
+        autoClose: 2400,
       });
       return ;
     }
@@ -68,7 +68,7 @@ const LoginScreen = () => {
                   disabled={isLoading}>
           Sign In
         </Button>
-
+        
       </Form>
       
       <Row className="py-3">

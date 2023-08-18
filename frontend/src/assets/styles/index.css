@@ -51,3 +51,9 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust the value to control the spacing */
+}
