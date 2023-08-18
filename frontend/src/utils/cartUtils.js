@@ -21,9 +21,9 @@ export const updateCart = (state, action) => {
   // if the price more than 100$ shippnig will be free
   state.shippingPrice = addDecimals(state.itemPrice > 100 ? 0 : 10);
   state.taxPrice = addDecimals(Number(state.itemPrice * 0.15).toFixed(2));//taxes
-  state.totalPrice = Number(state.itemPrice +
-                            state.shippingPrice +
-                            state.taxPrice).toFixed(2);
+  state.totalPrice = (Number(state.itemPrice) +
+                            Number(state.shippingPrice) +
+                            Number(state.taxPrice)).toFixed(2);
   localStorage.setItem('cart', JSON.stringify(state));
 
   return (state);
