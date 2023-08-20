@@ -19,7 +19,7 @@ const LoginScreen = () => {
   const [login, { isLoading }] = useLoginMutation();
   const { userInfo } = useSelector((state) => state.auth);
   
-  const { search } = useLocation(); //bring the params on the url
+  const { search } = useLocation(); //bring the params from the url
   const searchposition = new URLSearchParams(search);
   const redirect = searchposition.get('redirect') || "/";
 
