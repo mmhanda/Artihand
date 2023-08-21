@@ -1,4 +1,4 @@
-import { Form, ListGroupItem } from "react-bootstrap";
+import { ListGroupItem } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreatOrderMutation } from "../slices/ordersApiSlice";
 import { useEffect } from "react";
@@ -18,11 +18,8 @@ const PlaceOrderScreen = () => {
   const [ creatOrder, { isLoading, error } ] = useCreatOrderMutation();
 
 
-  function sleep(ms) {
+  const sleepForAnimation = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  const sleepForAnimation(ms) {
-    return new 
   }
 
   const placeOrderHandler = async () => {
@@ -40,8 +37,8 @@ const PlaceOrderScreen = () => {
         shippingPrice: cart.shippingPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      await sleep(2000);
-      // dispatch(clearCartItems());
+      await sleepForAnimation(2000);
+      dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
 
     } catch (err) {
