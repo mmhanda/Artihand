@@ -13,7 +13,7 @@ const addOrderItems = asyncHandler( async(req, res) => {
   } = req.body;
 
   if (orderItems && orderItems.length === 0) {
-    res.status(400);
+    return res.status(400);
     throw new Error('No Ordred Items');
   } else {
     const order = new Order({
@@ -31,22 +31,22 @@ const addOrderItems = asyncHandler( async(req, res) => {
       totalPrice,
     });
     const createOrder = await order.save();
-    res.status(201).json(createOrder);
+    return res.status(201).json(createOrder);
   }
 });
 
 const getMyOrders = asyncHandler( async(req, res) => {
   const orders = await Order.find({ user: req.user._id });
-  res.status(200).json(orders);
+  return res.status(200).json(orders);
 });
 
 const getOrderById = asyncHandler( async(req, res) => {
   const order = await Order.findById(req.prams.id).populate('user', 'name email'); // send the name and email too from the user collection
 
   if (order) {
-    res.status(200).json(order);
+    return res.status(200).json(order);
   } else {
-    res.status(404);
+    return res.status(404);
     throw new Error('Order Not found');
   }
 })
