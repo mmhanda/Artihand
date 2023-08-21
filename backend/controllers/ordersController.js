@@ -4,7 +4,7 @@ import Order from "../models/orderModel.js";
 const addOrderItems = asyncHandler( async(req, res) => {
   const {
     orderItems,
-    shippingAdress,
+    shippingAddress,
     paymentMethod,
     itemsPrice,
     taxPrice,
@@ -21,17 +21,20 @@ const addOrderItems = asyncHandler( async(req, res) => {
       orderItems: orderItems.map((product) => ({
         ...product,
         product: product._id,
-        _id: undefined,
       })),
-      shippingAdress,
+      shippingAddress,
       paymentMethod,
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
     });
-    const createOrder = await order.save();
-    return res.status(201).json(createOrder);
+    try {
+      const createOrder = await order.save();
+      return res.status(201).json(createOrder);
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 

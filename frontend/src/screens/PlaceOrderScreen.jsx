@@ -17,23 +17,33 @@ const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);
   const [ creatOrder, { isLoading, error } ] = useCreatOrderMutation();
 
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  const sleepForAnimation(ms) {
+    return new 
+  }
+
   const placeOrderHandler = async () => {
     try {
-      const res = await creatOrder({ 
+      
+      toast.success("Order Created", {
+        autoClose: 2000,
+      });
+      const res = await creatOrder({
         orderItems: cart.cartItems,
-        shippingAdress: cart.shippingAddress,
+        shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemPrice,
         taxPrice: cart.taxPrice,
         shippingPrice: cart.shippingPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      console.log(cart.res);
+      await sleep(2000);
       // dispatch(clearCartItems());
-      // navigate(`/order/${res._id}`);
-      toast.success("Order Created", {
-        autoClose: 2000,
-      });
+      navigate(`/order/${res._id}`);
+
     } catch (err) {
       toast.error(err?.error?.message || err.message);
     }
