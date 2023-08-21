@@ -44,7 +44,7 @@ const getMyOrders = asyncHandler( async(req, res) => {
 });
 
 const getOrderById = asyncHandler( async(req, res) => {
-  const order = await Order.findById(req.prams.id).populate('user', 'name email'); // send the name and email too from the user collection
+  const order = await Order.findById(req.params.id).populate('user', 'name email'); // send the name and email too from the user collection
 
   if (order) {
     return res.status(200).json(order);
