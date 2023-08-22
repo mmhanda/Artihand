@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, json, useParams } from "react-router-dom";
 import { ListGroup, Row, Col, Image, Form, Card, Button } from 'react-bootstrap';
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -18,6 +18,15 @@ const OrderScreen = () => {
   const [ {isPending}, paypalDispatch ] = usePayPalScriptReducer();
   const { userInfo }  = useSelector((state) => state.auth);
   const { data: paypal, isLoading: loadinPayPal, error: errorPayPal } = useGetPayPalClientIdQuery();
+
+  // console.log(JSON.stringify());
+  function onApprovetest() {}
+
+  function createOrder() {}
+
+  function onApprove() {}
+
+  function onError() {}
 
   useEffect(() => {
     if (!errorPayPal && !loadinPayPal && paypal.clientId) {
@@ -124,6 +133,23 @@ const OrderScreen = () => {
                       <Col>${ order.totalPrice }</Col>
                     </Row>
                   </ListGroup.Item>
+                  { !order.isPaid && (
+                    <ListGroup.Item>
+                      { loadingPay && <Loader/> }
+                      { isPending ? <Loader/> : (
+                        <div>
+                          <Button onClick={onApprovetest}
+                              style={{marginBottom: '10px'}}> test </Button>
+                          <div>
+                            <PayPalButtons createOrder={ createOrder() }
+                                        onApprove={ onApprove() }
+                                      onError={ onError() }>
+                            </PayPalButtons>
+                          </div>
+                        </div>
+                      ) }
+                    </ListGroup.Item>
+                  ) }
                 </ListGroup>
               </Card>
             </Col>
