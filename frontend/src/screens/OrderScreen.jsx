@@ -18,15 +18,41 @@ const OrderScreen = () => {
   const [ {isPending}, paypalDispatch ] = usePayPalScriptReducer();
   const { userInfo }  = useSelector((state) => state.auth);
   const { data: paypal, isLoading: loadinPayPal, error: errorPayPal } = useGetPayPalClientIdQuery();
+  
+  const onApprove = (data, actions) => {
+    return actions.order.capture().then(async(details) => {
+      try {
+        await payOrder({ orderId, details });
+        await refetch();
+        toast.success("Order Paid", {
+          autoClose: 2000,
+        });
+      } catch (err) {
+        toast.error(err?.data?.message || err?.message || err);
+      }
+    });
+  };
 
-  // console.log(JSON.stringify());
-  function onApprovetest() {}
+  const onApprovetest = async () => {
 
-  function createOrder() {}
+    try {
+      await payOrder({ orderId, details: {payer: {}} });
+      refetch();
+      toast.success("Order Paid", {
+        autoClose: 2000,
+      });
+    } catch (err) {
+      toast.error(err?.data?.message || err?.message || err);
+    }
+  }
 
-  function onApprove() {}
+  const createOrder = () => {
+    
+  }
 
-  function onError() {}
+  const onError = () => {
+    
+  }
 
   useEffect(() => {
     if (!errorPayPal && !loadinPayPal && paypal.clientId) {
@@ -141,9 +167,9 @@ const OrderScreen = () => {
                           <Button onClick={onApprovetest}
                               style={{marginBottom: '10px'}}> test </Button>
                           <div>
-                            <PayPalButtons createOrder={ createOrder() }
-                                        onApprove={ onApprove() }
-                                      onError={ onError() }>
+                            <PayPalButtons createOrder={ createOrder }
+                                        onApprove={ onApprove }
+                                      onError={ onError }>
                             </PayPalButtons>
                           </div>
                         </div>
