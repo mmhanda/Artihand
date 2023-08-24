@@ -3,7 +3,6 @@ import { ListGroup, Row, Col, Image, Form, Card, Button } from 'react-bootstrap'
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useGetOrderDetailsQuery, useGetPayPalClientIdQuery,
@@ -16,14 +15,13 @@ const OrderScreen = () => {
 
   const [ payOrder, { isLoading: loadingPay } ] = usePayOrderMutation();
   const [ {isPending}, paypalDispatch ] = usePayPalScriptReducer();
-  const { userInfo }  = useSelector((state) => state.auth);
   const { data: paypal, isLoading: loadinPayPal, error: errorPayPal } = useGetPayPalClientIdQuery();
   
   const onApprove = (data, actions) => {
     return actions.order.capture().then(async(details) => {
       try {
         await payOrder({ orderId, details });
-        await refetch();
+        refetch();
         toast.success("Order Paid", {
           autoClose: 2000,
         });
@@ -33,25 +31,20 @@ const OrderScreen = () => {
     });
   };
 
-  const onApprovetest = async () => {
-
-    try {
-      await payOrder({ orderId, details: {payer: {}} });
-      refetch();
-      toast.success("Order Paid", {
-        autoClose: 2000,
-      });
-    } catch (err) {
-      toast.error(err?.data?.message || err?.message || err);
-    }
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: order.totalPrice,
+          },
+        },
+      ]
+    })
   }
 
-  const createOrder = () => {
-    
-  }
-
-  const onError = () => {
-    
+  const onError = (err) => {
+    toast.error(err.message);
   }
 
   useEffect(() => {
@@ -164,14 +157,10 @@ const OrderScreen = () => {
                       { loadingPay && <Loader/> }
                       { isPending ? <Loader/> : (
                         <div>
-                          <Button onClick={onApprovetest}
-                              style={{marginBottom: '10px'}}> test </Button>
-                          <div>
-                            <PayPalButtons createOrder={ createOrder }
-                                        onApprove={ onApprove }
-                                      onError={ onError }>
-                            </PayPalButtons>
-                          </div>
+                          <PayPalButtons createOrder={ createOrder }
+                                      onApprove={ onApprove }
+                                    onError={ onError }>
+                          </PayPalButtons>
                         </div>
                       ) }
                     </ListGroup.Item>

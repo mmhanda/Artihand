@@ -10,7 +10,7 @@ import { notFound, errorHandler } from "./middleware/errorMideleware.js";
 dotenv.config();
 connectDB();
 
-const app = express();
+  const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // cookieParser for accesing the req.cookie.nameofcokie wich is Jwt 

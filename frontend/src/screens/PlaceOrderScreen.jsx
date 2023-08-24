@@ -26,7 +26,7 @@ const PlaceOrderScreen = () => {
     try {
       
       toast.success("Order Created", {
-        autoClose: 2000,
+        autoClose: 1500,
       });
       const res = await creatOrder({
         orderItems: cart.cartItems,
