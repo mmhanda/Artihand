@@ -11,7 +11,8 @@ export const productApiSlice = ApiSlice.injectEndpoints({
       query: () => ({
         url: PRODUCT_URL,
         method: 'POST',
-      })
+      }),
+      invalidatesTags: ['Product'], // this is for stop it from caching and always bring new data
     }),
   }),
 });
