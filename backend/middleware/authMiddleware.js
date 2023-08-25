@@ -8,7 +8,7 @@ const protect = asyncHandler( async (req, res, next) => {
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findById(decoded.UserId).select('-password'); //bring the object without the password
+      req.user = await User.findById(decoded.UserId).select('-password'); //bring the object without the password      
       next();
     } catch (error) {
       console.log(error);

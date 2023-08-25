@@ -12,7 +12,7 @@ const OrderListScreen = () => {
 
   useEffect(() => {
     refetch();
-  }, [])
+  },)
 
   return (
     <>
