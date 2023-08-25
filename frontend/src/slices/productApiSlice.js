@@ -5,8 +5,10 @@ export const productApiSlice = ApiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => ({ url: PRODUCT_URL }),
-      keepUnusedDataFor: 15,
+      keepUnusedDataFor: 2,
+      providesTags: ['Product'],
     }),
+
     createProduct: builder.mutation({
       query: () => ({
         url: PRODUCT_URL,
@@ -14,6 +16,7 @@ export const productApiSlice = ApiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Product'], // this is for stop it from caching and always bring new data
     }),
+
     updateProduct: builder.mutation({
       query: (productDetails) => ({
         url: `${PRODUCT_URL}/${productDetails._id}`,
