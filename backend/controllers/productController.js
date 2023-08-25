@@ -41,12 +41,41 @@ const createProduct = (asyncHandler(async(req, res) => {
     const createdProduct = await product.save();
     res.status(201).json(createProduct);
     
-    } catch (error) {
-      console.error(error);
-      res.status(404);
-      throw new Error("Page Not Found");
-    }
+  } catch (error) {
+    console.error(error);
+    res.status(404);
+    throw new Error("Page Not Found");
   }
-));
+}));
 
-export { GetProductbyID, Getproducts, createProduct };
+const updateProduct = asyncHandler(async(req, res) => {
+  
+  try { 
+    const {
+      name, price, description,
+      image, brand, category,
+      countInStock
+    } = req.body;
+    
+    const product = await Product.findById(req.params.id);
+    
+    if (product) {
+      product.name = name,
+      product.price = Number(price),
+      product.image = image,
+      product.brand = brand,
+      product.category = category,
+      product.description = description,
+      product.countInStock = Number(countInStock)
+    }
+    
+    const updateProduct = await product.save();
+    res.status(200).json(updateProduct);
+  } catch (error) {
+    res.status(404);
+    console.log(error);
+    throw new Error('Could not Update');
+  }
+});
+
+export { GetProductbyID, Getproducts, createProduct, updateProduct };
