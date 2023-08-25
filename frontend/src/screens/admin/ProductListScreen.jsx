@@ -3,12 +3,12 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import { FaTrash, FaEdit, FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-import { useGetProductsQuery } from "../../slices/productApiSlice";
+import { useGetProductsQuery, useCreateProductMutation } from "../../slices/productApiSlice";
 
 const ProductListScreen = () => {
 
   const { data: products, isLoading, error } = useGetProductsQuery();
-
+  const [ createProduct, {isLoading: } ] = useCreateProductMutation()
   const deleteHandler = async (itemId) => {
     console.log("delete");
   }
