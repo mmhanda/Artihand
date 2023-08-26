@@ -31,7 +31,7 @@ app.use('/api/config/paypal', ( req, res ) =>
           res.status(200).send({ clientId: process.env.PAYPAL_CLIENT_ID }));
 
 const __dirname = path.resolve(); // this is for bring the current dir
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads/', express.static(path.join(__dirname, '/uploads/')));
 
 app.use(errorHandler);
 app.use(notFound);

@@ -5,9 +5,8 @@ import { toast } from 'react-toastify';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import FormContainer from '../../components/FormContainer';
-import { useUpdateProductMutation } from '../../slices/productApiSlice';
+import { useUpdateProductMutation, useUploadProductImageMutation } from '../../slices/productApiSlice';
 import { useGetproductDetailsQuery } from "../../slices/productDetailsApiSlice";
-
 
 const ProductEditScreen = () => {
 
@@ -25,6 +24,7 @@ const ProductEditScreen = () => {
   const { data: product, isLoading, error} = useGetproductDetailsQuery(productId);
 
   const [ updateProduct, { isLoading: loadingUpdate } ] = useUpdateProductMutation();
+  const [ uploadProductImage, { isLoading: loadingUpload } ] = useUploadProductImageMutation();
 
   useEffect(() => {
     setName(product?.name);
