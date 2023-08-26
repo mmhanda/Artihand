@@ -64,6 +64,22 @@ const ProductEditScreen = () => {
       toast.error(err?.data?.message || err?.message || err);
     };
   };
+
+  const uploadFileHandler = async (e) => {
+
+    const formdata = new FormData();
+    formdata.append('image',e.target.files[0]);
+
+    console.log(e.target.files[0]);
+    try {
+      loadingUpdate && console.log("loading");
+      const res = await uploadProductImage(formdata).unwrap();
+      setImage(res.image); // the image is storing the new path
+      console.log(image);
+    } catch (err) {
+      toast.error(err?.data?.message || err?.message || err);
+    }
+  }
   return (
     <>
       <Link to='/admin/productlist' className="btn btn-light my-3">Go Back </Link>
@@ -89,7 +105,13 @@ const ProductEditScreen = () => {
                 ></Form.Control>
               </Form.Group>
 
-              {/* Place holder for the image */}
+              <Form.Group controlId="image" className="my-2" >
+                <Form.Label> Image </Form.Label>
+                <Form.Control type="text" placeholder="Choose Image"
+                    value={image} onChange={(e) => setImage(e.target.value)}>
+                </Form.Control>
+                <Form.Control type="file" onChange={uploadFileHandler}></Form.Control>
+              </Form.Group>
 
               <Form.Group controlId="brand">  
                 <Form.Label> Brand </Form.Label>

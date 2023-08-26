@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products/', productRoutes);
-app.use('/api/upload/', uploadRoute);
+app.use('/api/upload', uploadRoute);
 app.use('/api/users/', usersRoutes);
 app.use('/api/orders/', orderRoutes);
 app.use('/api/config/paypal', ( req, res ) =>

@@ -6,7 +6,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination(req, file, cb) { // cb mean the call back that we want to call
-    cb(null, '/uploads');
+    cb(null, './uploads');
   },
   filename(req, file, cb) {
     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 });
 
 const checkFiletype = (file, cb) => {
-  const fileTypes = /jpg|jpeg|png/;
+  const fileTypes = /^(jpg|jpeg|png)$/;
   const extname = fileTypes.test(file.originalname.toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
 
@@ -30,7 +30,8 @@ const upload = multer( {
   storage,
 } );
 
-router.post('/', upload.single('Image'), ( req, res ) => { // Image is for the field name here fieldname
+router.post('/', upload.single('image'), ( req, res ) => { // Image is for the field name here fieldname
+
   res.send({
     message: 'Image Uploaded',
     image: `/${req.file.path}`,
