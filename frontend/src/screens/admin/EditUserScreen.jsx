@@ -1,3 +1,4 @@
+import { useGetUserDetailsQuery, useUpdateUserMutation } from "../../slices/usersApiSlice";
 
 const EditUserScreen = () => {
   return (

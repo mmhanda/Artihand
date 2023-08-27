@@ -38,7 +38,7 @@ export const productApiSlice = ApiSlice.injectEndpoints({
       query: (productId) => ({
         url: `${PRODUCT_URL}/${productId}`,
         method: 'DELETE',
-      })
+      }),
     })
   }),
 });
