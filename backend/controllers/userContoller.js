@@ -147,7 +147,8 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   if (user) {
     if (user.isAdmin) {
-      res.status(400); //400 mean it a client error
+      console.error("ISADMIN");
+      res.status(400) //400 mean it a client error
       throw new Error('Cannot Delete Admin User');
     }
     else {
