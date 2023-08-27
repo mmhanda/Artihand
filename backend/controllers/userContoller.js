@@ -123,12 +123,12 @@ const getUsers = asyncHandler(async (req, res) => {
   try {
     const users = await User.find({});
   
-    if (user) {
+    if (users) {
       res.status(200).json(users);
     }
   } catch (error) {
     console.error(error);
-  }  
+  }
 });
 
 const getUserById = asyncHandler(async (req, res) => {
