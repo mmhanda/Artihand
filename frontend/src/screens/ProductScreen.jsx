@@ -30,6 +30,7 @@ const ProductScreen = () => {
 			(<>
         <Row>
           <Col md={6}>
+          {console.log(product?.image)}
             <Image src={product?.image} alt={product?.name} fluid />
           </Col>
 

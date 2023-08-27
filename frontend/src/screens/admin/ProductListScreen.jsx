@@ -4,12 +4,14 @@ import { FaTrash, FaEdit } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
-import { useGetProductsQuery, useCreateProductMutation } from "../../slices/productApiSlice";
+import { useGetProductsQuery, useCreateProductMutation,
+          useDeleteProductMutation } from "../../slices/productApiSlice";
 
 const ProductListScreen = () => {
 
   const { data: products, isLoading, error, refetch } = useGetProductsQuery();
   const [ createProduct, {isLoading: lodingCreate} ] = useCreateProductMutation();
+  const [ deleteProduct, { isLoading: lodingDelete } ] = useDeleteProductMutation();
 
   const createProductHandler = async () => {
     if (window.confirm('Confirm Creating New Product')) {
@@ -23,7 +25,15 @@ const ProductListScreen = () => {
   }
 
   const deleteHandler = async (itemId) => {
-    console.log("delete");
+    try {
+      await deleteProduct(itemId);
+      refetch();
+      toast.success("Product Deleted", {
+        autoClose: 2000,
+      });
+    } catch (err) {
+      toast.error(err?.error?.message || err.message);
+    }
   }
 
   return (
@@ -38,7 +48,8 @@ const ProductListScreen = () => {
           </Button>
         </Col>
       </Row>
-      { lodingCreate && <Loader /> }
+      { lodingDelete && <Loader/> }
+      { lodingCreate && <Loader />}
       { isLoading ? <Loader/> : error ? <Message variant='danger'> {error} </Message> :
         (
           <>
@@ -68,7 +79,7 @@ const ProductListScreen = () => {
                         </Button>
                       </LinkContainer>
                       <Button variant="danger" className="btn-sm"
-                        onClick={() => deleteHandler(item._id)}  >
+                        onClick={() => deleteHandler(item._id)} >
                         <FaTrash style={{color: 'white'}}/> </Button>
                     </td>
                   </tr>

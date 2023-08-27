@@ -70,12 +70,12 @@ const ProductEditScreen = () => {
     const formdata = new FormData();
     formdata.append('image',e.target.files[0]);
 
-    console.log(e.target.files[0]);
     try {
-      loadingUpdate && console.log("loading");
       const res = await uploadProductImage(formdata).unwrap();
       setImage(res.image); // the image is storing the new path
-      console.log(image);
+      toast.success("Uploaded Successfully", {
+        autoClose: 2000,
+      });
     } catch (err) {
       toast.error(err?.data?.message || err?.message || err);
     }
