@@ -49,7 +49,6 @@ const RegisterScreen = () => {
     else {
       try {
         const res = await register({ email, password, name }).unwrap(); //add unwrap is for throw error because it is returning a promess 
-        console.log(res);
         dispatch(setCredentials({...res}));
         navigate(redirect);
         toast.success("Registered Successfully", {

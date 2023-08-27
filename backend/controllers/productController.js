@@ -99,4 +99,42 @@ const deleteProduct = asyncHandler(async(req, res) => {
   }
 });
 
-export { GetProductbyID, Getproducts, createProduct, updateProduct, deleteProduct };
+const createProductReview = asyncHandler(async(req, res) => {
+  
+  const { rating, comment } = req.body;
+
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      const alreadyReviewed = Product.find((review) =>
+                              review.user.toString() === req.user._id.toString());
+      if (alreadyReviewed) {
+        res.status(400);
+        throw new Error('Product already reviewed');
+      }
+
+      const review = {
+        user: req.user._id,
+        name: req.user.name,
+        comment,
+        rating: Number(rating),
+      };
+
+      product.reviews.push(review);
+      product.numReviews = product.reviews.length;
+    }
+    else {
+      res.status(404);
+      throw new Error('Product not found');
+    }
+  } catch (error) {
+    res.status(404);
+    console.log(error);
+    throw new Error('Could not Update');
+  }
+});
+
+export { GetProductbyID, Getproducts,
+          createProduct, updateProduct,
+            deleteProduct, createProductReview };

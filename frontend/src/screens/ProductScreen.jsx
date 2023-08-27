@@ -2,11 +2,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Rating from "../components/Rating";
-import Loder from "../components/Loader";
 import Message from "../components/Message";
 import { Form, Col, Row, Image, ListGroup, Card, Button, ListGroupItem } from "react-bootstrap";
 import { useGetproductDetailsQuery } from "../slices/productDetailsApiSlice";
 import { addToCart } from "../slices/cartSlice";
+import Loader from "../components/Loader";
 
 const ProductScreen = () => {
   const {id: productID} = useParams();
@@ -25,12 +25,11 @@ const ProductScreen = () => {
     <>
     <Link className="btn btn-light my-3" to="/" >Go Back</Link>
     { isLoading ? (
-				<Loder/>
+				<Loader/>
 			) : error ? (<div><Message variant="danger"> { error?.data?.message || error.error } </Message></div>) :
 			(<>
         <Row>
           <Col md={6}>
-          {console.log(product?.image)}
             <Image src={product?.image} alt={product?.name} fluid />
           </Col>
 
