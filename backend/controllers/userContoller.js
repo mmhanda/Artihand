@@ -102,6 +102,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 //:id needed here
 const updateUser = asyncHandler(async (req, res) => {
+  
 });
 
 //this just for the admin
@@ -110,7 +111,7 @@ const getUsers = asyncHandler(async (req, res) => {
     const users = await User.find({});
   
     if (user) {
-      res.status(200).send(users);
+      res.status(200).json(users);
     }
   } catch (error) {
     console.error(error);
@@ -118,12 +119,32 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 const getUserById = asyncHandler(async (req, res) => {
-  res.send("user data by id");
+  const user = await User.findById(req.params.id).select('-password');
+  if (user) {
+    res.status(200).json(user);
+  }
+  else {
+    throw new Error('User not found');
+  }
 });
 
 //:id needed here
 const deleteUser = asyncHandler(async (req, res) => {
-  res.send("user deleted");
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    if (user.isAdmin) {
+      res.status(400); //400 mean it a client error
+      throw new Error('Cannot Delete Admin User');
+    }
+    else {
+      await User.deleteOne({ _id: user._id });
+      res.status(200).json({ message: "User Deleted Successfully" });
+    }
+  } else {
+    res.status(404);
+    throw new Error('User Not Found');
+  }
 });
 
 
