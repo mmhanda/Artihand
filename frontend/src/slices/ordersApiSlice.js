@@ -33,6 +33,7 @@ export const ordersApiSlice = ApiSlice.injectEndpoints({
       query: () => ({
         url: ORDERS_URL,
       }),
+      providesTags: ['Order'],
       keepUnusedDataFor: 15,
     }),
     deliverOrder: builder.mutation({

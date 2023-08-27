@@ -33,9 +33,9 @@ const OrderScreen = () => {
       }
     });
   };
-const fortest = async () => {
-  await payOrder({ orderId, details: {payer: {}} });
-}
+// const fortest = async () => {
+//   await payOrder({ orderId, details: {payer: {}} });
+// }
   const createOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
@@ -197,7 +197,7 @@ const fortest = async () => {
                         )}
                       </>
                     ) }
-                    <Button onClick={fortest}>waaa</Button>
+                    {/* <Button onClick={fortest}>waaa</Button> */}
                 </ListGroup>
               </Card>
             </Col>

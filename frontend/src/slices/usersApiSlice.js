@@ -38,11 +38,12 @@ export const usersApiSlice = ApiSlice.injectEndpoints({
       query: () => ({
         url: USERS_URL,
       }),
+      providesTags: ["User"],
+      keepUnusedDataFor: 5
     }),
-
-    
   }),
 });
 
 export const { useLoginMutation, useLogoutMutation,
-                  useRegisterMutation, useProfileMutation } = usersApiSlice;
+                  useRegisterMutation, useProfileMutation,
+                    useGetUsersQuery } = usersApiSlice;

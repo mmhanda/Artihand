@@ -4,15 +4,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import Message from "../../components/Message";
 import Loader from '../../components/Loader';
-import { useEffect } from "react";
 
 const OrderListScreen = () => {
 
-  const { data: orders, isLoading, error, refetch } = useGetOrdersQuery();
-
-  useEffect(() => {
-    refetch();
-  },)
+  const { data: orders, isLoading, error} = useGetOrdersQuery();
 
   return (
     <>
