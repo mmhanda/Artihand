@@ -28,14 +28,16 @@ const ProductListScreen = () => {
   }
 
   const deleteHandler = async (itemId) => {
-    try {
-      await deleteProduct(itemId);
-      refetch();
-      toast.success("Product Deleted", {
-        autoClose: 2000,
-      });
-    } catch (err) {
-      toast.error(err?.error?.message || err.message);
+    if (window.confirm('Are you sure!')) {
+      try {
+        await deleteProduct(itemId);
+        refetch();
+        toast.success("Product Deleted", {
+          autoClose: 2000,
+        });
+      } catch (err) {
+        toast.error(err?.error?.message || err.message);
+      }
     }
   }
 
