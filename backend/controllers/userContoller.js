@@ -49,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
   if (user) {
     generateToken(res, user._id);
 
-    res.status(201).json({ // 201 code means some thing created on the sevre successfully
+    res.status(201).json({ // 201 code means some thing created on the server successfully
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -102,12 +102,19 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 //:id needed here
 const updateUser = asyncHandler(async (req, res) => {
-  res.send("user updated by admin");
 });
 
 //this just for the admin
 const getUsers = asyncHandler(async (req, res) => {
-  res.send("Users data");
+  try {
+    const users = await User.find({});
+  
+    if (user) {
+      res.status(200).send(users);
+    }
+  } catch (error) {
+    console.error(error);
+  }  
 });
 
 const getUserById = asyncHandler(async (req, res) => {
