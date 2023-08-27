@@ -102,7 +102,20 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 //:id needed here
 const updateUser = asyncHandler(async (req, res) => {
-  
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.bog.email || user.email;
+    user.isAdmin = Boolean(req.body.isAdmin);
+
+    const upDateUser = await user.save();
+    res.status(200).json(updateUser);
+
+  } else {
+    res.status(404);
+    throw new Error('User Not Found');
+  }
 });
 
 //this just for the admin
