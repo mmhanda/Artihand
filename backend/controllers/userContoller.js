@@ -102,11 +102,14 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 //:id needed here
 const updateUser = asyncHandler(async (req, res) => {
+  console.error("ID : " + req.params.id);
   const user = await User.findById(req.params.id);
-
+  
   if (user) {
+    console.error(req.body.name);
+    console.error(req.body.isAdmin);
     user.name = req.body.name || user.name;
-    user.email = req.bog.email || user.email;
+    user.email = req.body.email || user.email;
     user.isAdmin = Boolean(req.body.isAdmin);
 
     const upDateUser = await user.save();
