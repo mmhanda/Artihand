@@ -18,6 +18,9 @@ const ProductListScreen = () => {
       try {
         await createProduct();
         refetch();
+        toast.success("Product Created", {
+          autoClose: 1000,
+        });
       } catch (err) {
         toast.error(err?.error?.message || err.message);
       }
