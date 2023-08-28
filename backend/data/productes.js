@@ -7,7 +7,7 @@ const products = [
     price: 599.99,
     countInStock: 1,
     rating: 4.5,
-    numReviews: 120,
+    numReviews: 0,
     image: "/images/phone.jpg"
   },
   {
@@ -18,7 +18,7 @@ const products = [
     price: 18.99,
     countInStock: 50,
     rating: 3.8,
-    numReviews: 85,
+    numReviews: 0,
     image: "/images/sample.jpg"
   },
   {
@@ -29,7 +29,7 @@ const products = [
     price: 799.99,
     countInStock: 30,
     rating: 2.6,
-    numReviews: 65,
+    numReviews: 0,
     image: "/images/playstation.jpg"
   },
   {
@@ -40,7 +40,7 @@ const products = [
     price: 499.99,
     countInStock: 20,
     rating: 4.9,
-    numReviews: 150,
+    numReviews: 0,
     image: "/images/airpods.jpg"
   },
   {
@@ -51,7 +51,7 @@ const products = [
     price: 79.95,
     countInStock: 75,
     rating: 4.3,
-    numReviews: 90,
+    numReviews: 0,
     image: "/images/mouse.jpg"
   },
   {
@@ -62,7 +62,7 @@ const products = [
     price: 249.50,
     countInStock: 15,
     rating: 3.7,
-    numReviews: 55,
+    numReviews: 0,
     image: "/images/screens.png"
   },
   {
@@ -73,7 +73,7 @@ const products = [
     price: 799.00,
     countInStock: 10,
     rating: 4.6,
-    numReviews: 30,
+    numReviews: 0,
     image: "/images/alexa.jpg"
   },
   {
@@ -84,7 +84,7 @@ const products = [
     price: 129.99,
     countInStock: 40,
     rating: 2.2,
-    numReviews: 80,
+    numReviews: 0,
     image: "/images/phone.jpg"
   },
   {
@@ -95,7 +95,7 @@ const products = [
     price: 139.95,
     countInStock: 50,
     rating: 4.8,
-    numReviews: 110,
+    numReviews: 0,
     image: "/images/sample.jpg"
   },
   {
@@ -106,7 +106,7 @@ const products = [
     price: 79.99,
     countInStock: 25,
     rating: 0.4,
-    numReviews: 70,
+    numReviews: 0,
     image: "/images/camera.jpg"
   },
   {
@@ -117,7 +117,7 @@ const products = [
     price: 299.00,
     countInStock: 20,
     rating: 4.6,
-    numReviews: 90,
+    numReviews: 0,
     image: "/images/mouse.jpg"
   },
   {
@@ -128,7 +128,7 @@ const products = [
     price: 1499.99,
     countInStock: 10,
     rating: 4.9,
-    numReviews: 120,
+    numReviews: 0,
     image: "/images/phone.jpg"
   },
   {
@@ -139,7 +139,7 @@ const products = [
     price: 499.95,
     countInStock: 0,
     rating: 4.3,
-    numReviews: 75,
+    numReviews: 0,
     image: "/images/sample.jpg"
   },
   {
@@ -150,7 +150,7 @@ const products = [
     price: 89.50,
     countInStock: 1,
     rating: 3.1,
-    numReviews: 55,
+    numReviews: 0,
     image: "/images/alexa.jpg"
   }
 ];

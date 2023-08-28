@@ -28,6 +28,7 @@ const CartScreen = () => {
     <Row>
       <Col md={8}>
         <h1 style={{marginBottom: '20px'}} >Shopping Cart</h1>
+        <Link className="btn btn-light my-3" to='/' >Go Back</Link>
         {cartItems.length === 0 ? (
           <Message>
             Your Cart is Empty <Link to='/' >Go Back</Link>

@@ -9,6 +9,6 @@ const router = express.Router();
 router.route('/').get(Getproducts).post(protect, isAdmin, createProduct);
 router.route('/:id').get(GetProductbyID).put(protect, isAdmin, updateProduct)
                     .delete(protect, isAdmin, deleteProduct);
-router.route('/:id/reviews').post(protect, createProduct);
+router.route('/:id/reviews').post(protect, createProductReview);
 
 export default router;
