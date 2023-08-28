@@ -18,7 +18,7 @@ const Getproducts = (asyncHandler(async(req, res) => {
 
   const count = await Product.countDocuments();
   const pageNumber = (req.query.pageNumber) || 1;
-  const pageSize = 2;
+  const pageSize = 4;
 
   const products = await Product.find({})
             .limit(pageSize).skip(pageSize * ( pageNumber - 1 ));

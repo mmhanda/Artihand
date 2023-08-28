@@ -24,7 +24,7 @@ const HomeScreen = () => {
 						</Col>
 					))}
 				</Row>
-				<Paginate/>
+				<Paginate pages={data.pages} pageNumber={data.pageNumber} />
 			</>)}
 		</>
 	);
