@@ -28,10 +28,9 @@ const products = [
     createdAt: '2023-08-28T08:10:04.522Z',
     updatedAt: '2023-08-28T08:12:05.0Z',
   },
-  // 9 more random product objects
   {
     name: 'Wireless Bluetooth Earbuds',
-    image: '/images/earbuds.jpg',
+    image: '/images/playstation.jpg',
     brand: 'AudioWave',
     category: 'Electronics',
     description: 'Experience true wireless freedom with AudioWave Wireless Bluetooth Earbuds.',
@@ -53,7 +52,7 @@ const products = [
   },
   {
     name: 'Professional DSLR Camera',
-    image: '/images/camera.jpg',
+    image: '/images/playstation.jpg',
     brand: 'PhotoPro',
     category: 'Electronics',
     description: 'Capture stunning photos with the high-performance PhotoPro Professional DSLR Camera.',
@@ -82,7 +81,7 @@ const products = [
   },
   {
     name: 'Compact Electric Scooter',
-    image: '/images/scooter.jpg',
+    image: '/images/playstation.jpg',
     brand: 'EcoRide',
     category: 'Outdoor Gear',
     description: 'Effortlessly glide through the city with the EcoRide Compact Electric Scooter.',
@@ -104,7 +103,7 @@ const products = [
   },
   {
     name: 'Premium Fitness Tracker',
-    image: '/images/fitness-tracker.jpg',
+    image: '/images/playstation.jpg',
     brand: 'FitTech',
     category: 'Fitness',
     description: 'Monitor your health and track your workouts with the FitTech Premium Fitness Tracker.',
@@ -133,7 +132,7 @@ const products = [
   },
   {
     name: 'Stainless Steel French Press',
-    image: '/images/french-press.jpg',
+    image: '/images/playstation.jpg',
     brand: 'BrewMaster',
     category: 'Kitchen Appliances',
     description: 'Brew rich and aromatic coffee with the BrewMaster Stainless Steel French Press.',
@@ -155,7 +154,7 @@ const products = [
   },
   {
     name: 'Smart Home Security Camera',
-    image: '/images/security-camera.jpg',
+    image: '/images/playstation.jpg',
     brand: 'SecureGuard',
     category: 'Home Security',
     description: 'Keep an eye on your home with the SecureGuard Smart Home Security Camera.',
@@ -177,7 +176,7 @@ const products = [
   },
   {
     name: 'Portable Bluetooth Speaker',
-    image: '/images/speaker.jpg',
+    image: '/images/playstation.jpg',
     brand: 'SoundBeat',
     category: 'Electronics',
     description: 'Enjoy your favorite tunes on the go with the SoundBeat Portable Bluetooth Speaker.',
@@ -206,7 +205,7 @@ const products = [
   },
   {
     name: 'Outdoor Camping Tent',
-    image: '/images/tent.jpg',
+    image: '/images/playstation.jpg',
     brand: 'WildGear',
     category: 'Outdoor Gear',
     description: 'Experience the great outdoors with the WildGear Outdoor Camping Tent.',
@@ -225,7 +224,7 @@ const products = [
     ],
     createdAt: '2023-08-28T09:30:00.000Z',
     updatedAt: '2023-08-28T09:30:00.000Z'
-  },
+  }
 ];
 
 export default products;

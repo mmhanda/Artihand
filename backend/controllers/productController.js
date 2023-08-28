@@ -15,10 +15,16 @@ const GetProductbyID = (asyncHandler(async(req, res) => {
 }));
 
 const Getproducts = (asyncHandler(async(req, res) => {
-  const products = await Product.find();
+
+  const count = await Product.countDocuments();
+  const pageNumber = (req.query.pageNumber) || 1;
+  const pageSize = 2;
+
+  const products = await Product.find({})
+            .limit(pageSize).skip(pageSize * ( pageNumber - 1 ));
 
   if (products)
-    res.json(products);
+    res.json({products, pageNumber, pages: Math.ceil(count / pageSize)});
   else {
     res.status(404);
     throw new Error("Page Not Found");
