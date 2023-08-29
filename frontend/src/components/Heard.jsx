@@ -1,12 +1,13 @@
 import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import logo from "../assets/logo (1).png";
+import logo from "../assets/logo.png";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import SearchBox from './SearchBox';
 
 const Header = () => {
 
@@ -32,16 +33,17 @@ const Header = () => {
 
   return (
       <header>
-      <Navbar bg="light" variant="light" expand="md" collapseOnSelect>
+      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src={logo} alt=""/>
+              <img src={logo} alt=""/> ProShop 
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox/>
               { userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to='/profile'>
