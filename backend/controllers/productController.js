@@ -6,7 +6,6 @@ const GetProductbyID = (asyncHandler(async(req, res) => {
 
   if (product) {
     res.json(product);
-    console.error(product);
   }
   else {
     res.status(404);
@@ -25,7 +24,6 @@ const Getproducts = (asyncHandler(async(req, res) => {
 
   const products = await Product.find({ ...keyWord })
   .limit(pageSize).skip(pageSize * ( pageNumber - 1 ));
-  console.error(keyWord)
   const count = await Product.countDocuments({ ...keyWord });
   
   if (products)
