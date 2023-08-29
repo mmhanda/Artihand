@@ -10,7 +10,7 @@ const ProductCarousel = () => {
   return (
     <div className="product-carousel-container">
       {isLoading ? (
-        <Loader />
+        <></>
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
