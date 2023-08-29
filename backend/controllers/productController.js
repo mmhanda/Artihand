@@ -146,6 +146,20 @@ const createProductReview = asyncHandler(async(req, res) => {
   }
 });
 
+const GetTopProducts = (asyncHandler(async(req, res) => {
+  const products = await Product.find( {} ).sort({ rating: -1 }).limit(3);
+
+  if (products) {
+    res.json(products);
+    console.error(products);
+  }
+  else {
+    res.status(404);
+    throw new Error("Item Not Found");
+  }
+}));
+
 export { GetProductbyID, Getproducts,
           createProduct, updateProduct,
-            deleteProduct, createProductReview };
+            deleteProduct, createProductReview,
+              GetTopProducts};
