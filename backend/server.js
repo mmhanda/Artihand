@@ -17,12 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // cookieParser for accesing the req.cookie.nameofcokie wich is Jwt 
 
-app.get('/', (req, res) => {
-  if (req.params.num == "pass") {
-    res.send("this is from main route Should remove this message");
-  }
-});
-
 app.use('/api/products/', productRoutes);
 app.use('/api/upload', uploadRoute);
 app.use('/api/users/', usersRoutes);
@@ -32,6 +26,19 @@ app.use('/api/config/paypal', ( req, res ) =>
 
 const __dirname = path.resolve(); // this is for bring the current dir
 app.use('/uploads/', express.static(path.join(__dirname, '/uploads/')));
+
+if ( process.env.NODE_ENV === 'production' ) {
+
+  app.use(express.static(path.join(__dirname, "/frontend/build"))); // set static folder
+
+  app.get('*', (req, res) => // any route that i don't have will be redirected to this on below
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')));
+
+  } else {
+  app.get('/', (req, res) => {
+    res.send("NOTICE: Api is running...");
+  });  
+}
 
 app.use(errorHandler);
 app.use(notFound);

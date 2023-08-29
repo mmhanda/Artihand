@@ -16,7 +16,7 @@ const GetProductbyID = (asyncHandler(async(req, res) => {
 const Getproducts = (asyncHandler(async(req, res) => {
 
   const pageNumber = (req.query.pageNumber) || 1;
-  const pageSize = 8;
+  const pageSize = process.env.PAGINATION_LIMIT;
   
   const keyWord = req.query.keyword ? {
     name: {$regex: req.query.keyword, $options: 'i'} // the i option make the regex not begin sensitive means that if the match is far away just put Empty ojb on it
