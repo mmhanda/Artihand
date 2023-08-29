@@ -160,7 +160,6 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 export {authUser, registerUser,
           logoutUser, getUserProfile,
             updateUserProfile, updateUser,

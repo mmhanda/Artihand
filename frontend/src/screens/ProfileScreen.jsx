@@ -114,7 +114,7 @@ const ProfileScreen = () => {
                     <td> ${ order.totalPrice } </td>
                     <td> { order.isPaid ? order.paidAt.substring(0, 10)
                               : <FaTimes style={{color: 'red'}}/> } </td>
-                    <td> { order.isDelivered ? (order.deliveredAt)
+                    <td> { order.isDelivered ? (order.deliveredAt.substring(0,10))
                               : <FaTimes style={{color: 'red'}}/>} </td>
                     <td>
                       <LinkContainer to={`/order/${order._id}`}>
