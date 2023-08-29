@@ -8,8 +8,8 @@ import Paginate from './Paginate';
 
 const HomeScreen = () => {
 
-	const { pageNumber } = useParams();
-	const { data, isLoading, error } = useGetProductsQuery({pageNumber});
+	const { pageNumber, keyword } = useParams();
+	const { data, isLoading, error } = useGetProductsQuery({ pageNumber, keyword });
 
 	return (
 		<>
@@ -24,7 +24,8 @@ const HomeScreen = () => {
 						</Col>
 					))}
 				</Row>
-				<Paginate pages={data.pages} pageNumber={data.pageNumber} />
+				<Paginate pages={data.pages} pageNumber={data.pageNumber}
+										keyword={ keyword ? keyword : ''}/>
 			</>)}
 		</>
 	);

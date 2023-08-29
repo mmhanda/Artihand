@@ -16,13 +16,18 @@ const GetProductbyID = (asyncHandler(async(req, res) => {
 
 const Getproducts = (asyncHandler(async(req, res) => {
 
-  const count = await Product.countDocuments();
   const pageNumber = (req.query.pageNumber) || 1;
-  const pageSize = 4;
+  const pageSize = 8;
+  
+  const keyWord = req.query.keyword ? {
+    name: {$regex: req.query.keyword, $options: 'i'} // the i option make the regex not begin sensitive means that if the match is far away just put Empty ojb on it
+  } : {};
 
-  const products = await Product.find({})
-            .limit(pageSize).skip(pageSize * ( pageNumber - 1 ));
-
+  const products = await Product.find({ ...keyWord })
+  .limit(pageSize).skip(pageSize * ( pageNumber - 1 ));
+  console.error(keyWord)
+  const count = await Product.countDocuments({ ...keyWord });
+  
   if (products)
     res.json({products, pageNumber, pages: Math.ceil(count / pageSize)});
   else {
