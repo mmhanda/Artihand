@@ -9,6 +9,7 @@ import { useCreateProductReviewMutation } from "../slices/productApiSlice";
 import { addToCart } from "../slices/cartSlice";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
+import Meta from '../components/Meta';
 
 const ProductScreen = () => {
   const { id: productID } = useParams();
@@ -42,11 +43,12 @@ const ProductScreen = () => {
   }
   return (
     <>
-    <Link className="btn btn-light my-3" to="/" >Go Back</Link>
+    <Link className="btn btn-light my-3" to="/" onClick={<Meta/>}>Go Back</Link>
     { isLoading ? (
 				<Loader/>
 			) : error ? (<div><Message variant="danger"> { error?.data?.message || error.error } </Message></div>) :
 			(<>
+        <Meta title={product.name}/>
         <Row>
           <Col md={6}>
             <Image src={product?.image} alt={product?.name} fluid />

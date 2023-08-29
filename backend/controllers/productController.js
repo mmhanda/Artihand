@@ -149,7 +149,6 @@ const GetTopProducts = (asyncHandler(async(req, res) => {
 
   if (products) {
     res.json(products);
-    console.error(products);
   }
   else {
     res.status(404);

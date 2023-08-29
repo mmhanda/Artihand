@@ -6,12 +6,17 @@ import Loader from '../components/Loader';
 import Message from "../components/Message";
 import Paginate from './Paginate';
 import Carousel from '../components/ProductCarousel';
+import { useEffect } from 'react';
+import Meta from '../components/Meta';
 
 const HomeScreen = () => {
 
 	const { pageNumber, keyword } = useParams();
 	const { data, isLoading, error } = useGetProductsQuery({ pageNumber, keyword });
 
+	useEffect(() => {
+		<Meta/>
+	}, []);
 	return (
 		<>
 			{ !keyword ? <Carousel/> :
