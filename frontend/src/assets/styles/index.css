@@ -43,17 +43,6 @@ table th {
   margin-top: 10px;
 }
 
-/* .carousel-caption {
-  position: absolute;
-  width: 500%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-} */
-
-
-
 .product-carousel-container {
   position: relative;
   overflow: hidden;
@@ -63,7 +52,7 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px; /* Adjust the height as needed */
+  height: 500px;
 }
 
 .image-container {
@@ -78,20 +67,19 @@ table th {
   max-width: 100%;
 }
 
-.carousel-caption {
+.carousel-caption h2{
   position: absolute;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 150%;
+  right: -200px;  
+  bottom: -38px;
+  padding: 30px;
   background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center; 
 }
-
-
-
 
 .button-container {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Adjust the value to control the spacing */
+  gap: 50px;
 }
